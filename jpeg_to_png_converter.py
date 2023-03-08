@@ -14,27 +14,22 @@ import pathlib
 
 
 def jpeg_to_png(loop_folder, new_folder):
+    if '/' in loop_folder and '/' in new_folder:
+        loop_folder = loop_folder.replace('/',"")
+        new_folder = new_folder.replace("/","")
     try:
-
         os.makedirs(new_folder)
         for images in os.listdir(loop_folder):
-            if '/' in loop_folder:
-                img_png = Image.open(f'./{loop_folder}{images}')
-            else:
-                img_png = Image.open(f'./{loop_folder}/{images}')
+            img_png = Image.open(f'./{loop_folder}/{images}')
             file_path = img_png.filename
             file_path = os.path.splitext(file_path)[0]
             file_name = basename(file_path)
             # img_png.save(f'./{new_folder}{img_png.filename}', 'png')
-            if '/' in new_folder:
-                img_png.save(f'./{new_folder}{file_name}.png', 'png')
-                print(file_name)
-            else:
-                img_png.save(f'./{new_folder}/{file_name}.png', 'png')
-                print(file_name)
+            img_png.save(f'./{new_folder}/{file_name}.png', 'png')
+            print(file_name)
     except OSError as error:
         if error.errno == errno.EEXIST:
-            print("your folder already exists, please try again")
+            print("your folder already exists, please try")
         else:
             print(error)
             
