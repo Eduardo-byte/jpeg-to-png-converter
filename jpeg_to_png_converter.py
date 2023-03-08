@@ -34,7 +34,7 @@ def jpeg_to_png(loop_folder, new_folder):
                 print(file_name)
     except OSError as error:
         if error.errno == errno.EEXIST:
-            print("your folder already exists")
+            print("your folder already exists, please try again")
         else:
             print(error)
             
