@@ -10,9 +10,6 @@ import pathlib
 # loop through pokedex and convert images to png
 # saved them to the new folder
 
-
-
-
 def jpeg_to_png(loop_folder, new_folder):
     if '/' in loop_folder and '/' in new_folder:
         loop_folder = loop_folder.replace('/',"")
@@ -32,9 +29,11 @@ def jpeg_to_png(loop_folder, new_folder):
             print("your folder already exists, please try")
         else:
             print(error)
-            
-            
+                              
 if __name__ == '__main__':
-    loop_folder = sys.argv[1]
-    new_folder = sys.argv[2]
+    #loop_folder = sys.argv[1]
+    #new_folder = sys.argv[2]
+    
+    loop_folder = "pokedex"
+    new_folder = 'new2'
     jpeg_to_png(loop_folder, new_folder)
