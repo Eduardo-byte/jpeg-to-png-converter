@@ -82,12 +82,24 @@ watermark('pdf_files/super.pdf', 'pdf_files/wtr.pdf', 'pdf_files/watered.pdf')
 
 
 ### Another way to add the watermark ###
+# template = PyPDF2.PdfReader(open('pdf_files/super.pdf', 'rb'))
+# watermark = PyPDF2.PdfReader(open('pdf_files/wtr.pdf', 'rb'))
+# output = PyPDF2.PdfWriter()
+
+# for i in range(len(template.pages)):
+#     page = template.pages[i]
+#     page.merge_page(watermark.pages[0])
+#     output.add_page(page)
+
+# with open('pdf_files/watermarked_output.pdf', 'wb') as file:
+#     output.write(file)
+
+## with other for loop ##
 template = PyPDF2.PdfReader(open('pdf_files/super.pdf', 'rb'))
 watermark = PyPDF2.PdfReader(open('pdf_files/wtr.pdf', 'rb'))
 output = PyPDF2.PdfWriter()
 
-for i in range(len(template.pages)):
-    page = template.pages[i]
+for page in template.pages:
     page.merge_page(watermark.pages[0])
     output.add_page(page)
 
